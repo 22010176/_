@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylesheet/calendar.css">
+</head>
+
+<body>
+    <main class="container">
+        <section class="left-container">
+            <div class="section form-tim-kiem">
+                <h2>Nhap thong tin tim kiem</h2>
+                <form action="./">
+                    <div class="form-section">
+                        <label for="maHocSinh">Ma hoc sinh</label>
+                        <input name="maHocSinh" type="password" value="8DE5A8FF18C8477FA6293B67E78CD5E4"
+                            class="text-input" id="maHocSinh">
+                    </div>
+                    <div class="form-section">
+                        <button class="btn submit-button">Tim kiem</button>
+                    </div>
+                </form>
+            </div>
+            <div class="section danh-sach-ke-hoach">
+                <h2>Ke hoach</h2>
+                <div class="danh-sach flex ke-hoach">
+                </div>
+            </div>
+            <div class="section danh-sach-hoc-phan">
+                <h2>Danh sach hoc phan</h2>
+                <div class="danh-sach hoc-phan">
+                </div>
+            </div>
+            <div class="section danh-sach-lop-hoc-phan">
+                <h2>Danh sach lop</h2>
+                <div class="danh-sach lop-hoc-phan">
+                </div>
+            </div>
+            <div class="section danh-sach-lop-hoc-phan-thuc-hanh">
+                <h2>Danh sach lop thuc hanh</h2>
+                <div class="danh-sach lop-hoc-phan-thuc-hanh">
+                </div>
+            </div>
+            <div class="section">
+                <button class="btn nut-chon-lop">Them Lop</button>
+            </div>
+        </section>
+        <section class="main-container">
+            <div class="section thong-tin-hs">
+                <div class="title">
+                    <h2>Thong tin hoc sinh</h2>
+                </div>
+                <div class="content">
+                    <div class="info-list">
+                        <h3 class="info-list-heading">Ma Sinh Vien</h3>
+                        <p class="info-list-content" data-field="ma-sinh-vien"></p>
+                    </div>
+                    <div class="info-list">
+                        <h3 class="info-list-heading">Ten</h3>
+                        <p class="info-list-content" data-field="ten-sinh-vien"></p>
+                    </div>
+                    <div class="info-list">
+                        <h3 class="info-list-heading">Khoa</h3>
+                        <p class="info-list-content" data-field="khoa"></p>
+                    </div>
+                    <div class="info-list">
+                        <h3 class="info-list-heading">Nganh</h3>
+                        <p class="info-list-content" data-field="nganh-hoc"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Lich ca nhan</h2>
+                <div class="study-calendar">
+                    <div class="dates">
+                        <div class="table-heading date">Thu 2</div>
+                        <div class="table-heading date">Thu 3</div>
+                        <div class="table-heading date">Thu 4</div>
+                        <div class="table-heading date">Thu 5</div>
+                        <div class="table-heading date">Thu 6</div>
+                        <div class="table-heading date">Thu 7</div>
+                        <div class="table-heading date">Chu Nhat</div>
+                    </div>
+                    <div class="tiets">
+                        <div class="table-heading tiet">1</div>
+                        <div class="table-heading tiet">2</div>
+                        <div class="table-heading tiet">3</div>
+                        <div class="table-heading tiet">4</div>
+                        <div class="table-heading tiet">5</div>
+                        <div class="table-heading tiet">6</div>
+                        <div class="table-heading tiet">7</div>
+                        <div class="table-heading tiet">8</div>
+                        <div class="table-heading tiet">9</div>
+                        <div class="table-heading tiet">10</div>
+                        <div class="table-heading tiet">11</div>
+                        <div class="table-heading tiet">12</div>
+                    </div>
+                    <div class="main-calendar">
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="right-container calendar">
+            <div class="date-calendar">
+                <div class="calendar-month">
+                    <button class="btn doi-thang" data-thang-thaydoi="-1">thang truoc</button>
+                    <p><span class="month-display"></span> / <span class="year-display"></span></p>
+                    <button class="btn doi-thang" data-thang-thaydoi="1">thang sau</button>
+                </div>
+                <div class="weekdates">
+                    <div class="weekdates-day">Sun</div>
+                    <div class="weekdates-day">Mon</div>
+                    <div class="weekdates-day">Tue</div>
+                    <div class="weekdates-day">Wed</div>
+                    <div class="weekdates-day">Thu</div>
+                    <div class="weekdates-day">Fri</div>
+                    <div class="weekdates-day">Sat</div>
+                </div>
+                <div class="calendar-dates">
+                </div>
+            </div>
+            <div class="section danh-sach-lop-da-dang-ki">
+                <h2>Danh sach lop da dang ki</h2>
+                <div class="danh-sach flex lop-da-dang-ki" style="flex-direction: column;">
+                </div>
+            </div>
+            <div class="section danh-sach-lop-da-chon">
+                <h2>Danh sach lop da chon</h2>
+                <div class="danh-sach flex lop-da-chon" style="flex-direction: column;">
+                </div>
+            </div>
+
+        </section>
+        <div class="check-fetch hide"> <span>Fetching...</span> </div>
+    </main>
+    <script type="module" src="./utilities/calendar.js" defer></script>
+    <script type="module" src="./StudyCalendar.js"></script>
+    <script type="module" src="./index.js" defer></script>
+</body>
+
+</html>

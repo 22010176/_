@@ -1,0 +1,54 @@
+.date-calendar {
+    border: 1px white solid;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto auto 1fr;
+    gap: 5px;
+}
+
+.weekdates {
+    /* border: 1px white solid; */
+    grid-row: 2/ 3;
+    /* padding: 5px; */
+    grid-column: 1/8;
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-month {
+    width: 100%;
+    display: grid;
+    grid-column: 1/8;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.calendar-month p,
+.calendar-month span {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.calendar-month .btn {
+    border-radius: 0px;
+    border: none;
+
+    cursor: pointer;
+}
+
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 2px;
+    margin: 3px;
+    grid-row: 3/4;
+    grid-column: 1/ 8;
+}
+
+.calendar-day,
+.calendar-day-empty {
+    padding: 5px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid white;
+}
