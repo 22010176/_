@@ -1,4 +1,4 @@
-import { ToggleClass } from "./utils.js";
+import { ToggleClass } from "./Utilities.js";
 
 const dateCalendar = document.querySelector(".calendar-dates")
 const calenderElem = document.querySelector(".date-calendar")
@@ -45,7 +45,6 @@ function ChangeMonth(value) {
 }
 function InitCalendarUIEvent(funcs = []) {
     calenderElem.addEventListener("click", function (e) {
-        console.log(1)
         const elem = e.target
         if (elem.classList.contains("doi-thang")) return ChangeMonth(+elem.getAttribute("data-thang-thaydoi"))
         if (elem.classList.contains("calendar-day")) return ToggleClass(elem, "active")

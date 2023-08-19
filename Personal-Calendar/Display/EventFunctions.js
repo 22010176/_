@@ -1,24 +1,21 @@
-import { RenderHS, ddkCon, hpCon, khCon, ldcCon, lhpCon, lhpthCon } from './DisplayUI.js'
-import { GetHPData, GetHSData, GetKHData, GetKQDK, GetLHCNData, GetLHHPData, GetLHPData } from './FetchData.js'
-import { HP, HS, KH, KQDK, LHP } from './FetchDatabase.js'
-import Database from './utilities/database.js'
-import { CurrentDate, InitCalendar } from './utilities/calendar.js'
-import { GetFirstAndLastDayOfWeek, RenderLHCN, studyCalendar } from './StudyCalendar.js'
-import { ToggleClass, CheckElement, ToggleLeftContainer, deleteObj } from "./utilities/utils.js"
+import { RenderHS, ddkCon, hpCon, ldcCon, khCon, lhpCon, lhpthCon } from './DisplayUI.js'
+import { ToggleClass, ToggleLeftContainer, deleteObj, CheckElement } from '../utilities/Utilities.js'
+import { GetHPData, GetHSData, GetKHData, GetKQDK, GetLHCNData, GetLHHPData, GetLHPData } from '../FetchData/FetchData.js'
+import { RenderLHCN } from './StudyCalendar.js'
+import Database from '../utilities/Database.js'
+import { KH, HS, HP, LHP, KQDK, LHHP } from '../FetchData/FetchDatabase.js'
 
-Database.Load()
+const data = { curHS: null, curKH: null, curHP: null, curLHP: null, curLHPTH: null }
+
 const formInput = document.querySelector("#maHocSinh")
 const formSubmitButton = document.querySelector(".submit-button")
 const chonLop = document.querySelector(".nut-chon-lop")
 
-const data = { curHS: null, curKH: null, curHP: null, curLHP: null, curLHPTH: null }
 
-InitCalendar([_ => data.curHS && RenderLHCN(data.curHS.QLSV_NGUOIHOC_ID)])
-
-formSubmitButton.addEventListener("click", formInputBtnE)
-async function formInputBtnE(e) {
+export async function formInputBtnE(e) {
     e.preventDefault()
     // Reset Display
+
     deleteObj(data)
 
     // Reset Render
@@ -41,9 +38,7 @@ async function formInputBtnE(e) {
     RenderLHCN(hs.QLSV_NGUOIHOC_ID)
     khCon.Render()
 }
-
-khCon.addEvent("click", khConE)
-async function khConE(e) {
+export async function khConE(e) {
     // Checking
     if (!CheckElement(e, 'du-lieu')) return
     const elem = e.target
@@ -72,8 +67,7 @@ async function khConE(e) {
     ddkCon.Render()
 }
 
-hpCon.addEvent("click", hpConE)
-async function hpConE(e) {
+export async function hpConE(e) {
     // Checking
     if (!CheckElement(e, 'du-lieu')) return
     const elem = e.target
@@ -97,8 +91,7 @@ async function hpConE(e) {
     lhpthCon.Render()
 }
 
-lhpCon.addEvent("click", lhpConE)
-async function lhpConE(e) {
+export async function lhpConE(e) {
     if (!CheckElement(e, 'du-lieu')) return
     const elem = e.target
     deleteObj(data, ['curHS', 'curKH', 'curHP'])
@@ -119,8 +112,8 @@ async function lhpConE(e) {
     lhpthCon.Render()
 }
 
-lhpthCon.addEvent("click", lhpthConE)
-async function lhpthConE(e) {
+
+export async function lhpthConE(e) {
     // Checking
     if (!CheckElement(e, 'du-lieu')) return
     const elem = e.target
@@ -136,8 +129,8 @@ async function lhpthConE(e) {
     // Render Data
 }
 
-chonLop.addEventListener("click", ChonLopE)
-function ChonLopE(e) {
+
+export async function ChonLopE(e) {
     if (!!lhpCon.data.length != !!data.curLHP) return
     if (!!lhpthCon.data.length != !!data.curLHPTH) return
 
@@ -145,8 +138,7 @@ function ChonLopE(e) {
     ldcCon.ReplaceData(ldcCon.data.filter(data => !lop.every(obj => obj.DAOTAO_HOCPHAN_ID == data.DAOTAO_HOCPHAN_ID)).concat(...lop)).Render()
 }
 
-ldcCon.addEvent("click", ldcConE)
-function ldcConE(e) {
+export async function ldcConE(e) {
     // Checking
     if (!CheckElement(e, 'du-lieu')) return
     const elem = e.target
@@ -155,8 +147,7 @@ function ldcConE(e) {
     ldcCon.ReplaceData(ldcCon.data.filter(data => !(data.ID == id || maNhom && maNhom == data.MANHOMLOP))).Render()
 }
 
-ddkCon.addEvent("click", ddkConE)
-function ddkConE(e) {
+export async function ddkConE(e) {
     if (!CheckElement(e, 'lop-da-dangki')) return
     const elem = e.target
     const maNhom = elem.getAttribute('data-nhomlop')
@@ -164,5 +155,4 @@ function ddkConE(e) {
     if (maNhom) return document.querySelectorAll(`.lop-da-dangki[data-nhomlop = "${maNhom}"]`).forEach(elem => elem.classList.toggle('dulieu-huydangki'))
     elem.classList.toggle("dulieu-huydangki")
 }
-
 export function GetCurrentSelect() { return data }

@@ -60,8 +60,6 @@ export async function LayLopHocPhanDangToChuc(maHocSinh, maNganh, maKeHoach, maH
     return await LayDuLieu(link);
 }
 export async function LayLichCaNhan(maHS, ngayBD, ngayKT) {
-    console.log(ngayBD)
     const link = `https://qldtbeta.phenikaa-uni.edu.vn/sinhvienapi/api/SV_ThongTin/LayDSLichCaNhan?strQLSV_NguoiHoc_Id=${maHS}&strNgayBatDau=${ngayBD.map(i => (i + '').padStart(2, '0')).join("%2F")}&strNgayKetThuc=${ngayKT.map(i => (i + '').padStart(2, '0')).join("%2F")}&strNguoiThucHien_Id=${maHS}`
-    console.log(link)
     return await LayDuLieu(link);
 }

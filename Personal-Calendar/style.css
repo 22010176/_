@@ -126,6 +126,13 @@ h2 {
     gap: 5px;
 }
 
+.section-header {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
 /* Input form__________________________________________ */
 form {
     display: flex;

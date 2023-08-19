@@ -1,4 +1,4 @@
-import { CompareObject } from "./utils.js";
+import { CompareObject } from "./Utilities.js";
 
 export default class Container {
     constructor(element, renderFunc) {

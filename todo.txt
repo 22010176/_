@@ -1,0 +1,39 @@
+1. Use jquery
+
+* 2. fetch and load database and check change in data [selected field] in the first time load page 
+    save data base
+    save custom user data
+
+3. remake the calendar api
+
+4. use webpack for deploy app
+
+5. Checking program structure
+    Visualize the dataflow pipeline
+
+6. save user lasting login interaction
+    kh, hp, lhp, lhpth
+    ldc, ldk
+    lastest selected date
+
+* 7. add option to force sync data from school api
+    setup frontend html
+    add function
+    setup database
+
+* 8. toggle display study stuff
+* 9. optimize database fetching
+10. add multiple page to see student's point
+
+11. implement some security protection
+    Add account system
+    auto get userID through sv ID
+    change old localstorage database to Firebase or others database
+
+12. create navbar to navigate through different pages
+
+13. Learn React?
+
+14. Change the calender depend on personal calendar or testing subject
+
+

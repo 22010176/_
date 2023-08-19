@@ -1,4 +1,4 @@
-import { CompareObject, FindDuplicate, FindUnDuplicate, LayDuLieu, LuuDuLieu, deleteObj } from './utils.js'
+import { CompareObject, FindDuplicate, FindUnDuplicate, LayDuLieu, LuuDuLieu, deleteObj } from './Utilities.js'
 
 function GenerateID(times = 1) {
     let result = ''

@@ -1,4 +1,4 @@
-import Container from './utilities/Container.js'
+import Container from '../utilities/Container.js'
 
 const danhSachKeHoach = document.querySelector(".ke-hoach")
 const danhSachHocPhan = document.querySelector(".hoc-phan")

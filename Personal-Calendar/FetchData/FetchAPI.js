@@ -1,6 +1,6 @@
-import { LayDuLieuHocSinh, LayHocPhanToChuc, LayLopHocPhanDangToChuc, LayDanhSachHocPhanDaDangKi, LayTatCaKeHoach, LayLichHoc, LayLichCaNhan } from "./utilities/GetAPI.js"
+import { LayDuLieuHocSinh, LayHocPhanToChuc, LayLopHocPhanDangToChuc, LayDanhSachHocPhanDaDangKi, LayTatCaKeHoach, LayLichHoc, LayLichCaNhan } from "../utilities/GetAPI.js"
 import { HS, KH, HP, LHP, KQDK, LHHP } from './FetchDatabase.js'
-import Database from "./utilities/database.js"
+import Database from "../utilities/Database.js"
 
 export async function _HS(hsID) {
     const data = (await LayDuLieuHocSinh(hsID)).Data

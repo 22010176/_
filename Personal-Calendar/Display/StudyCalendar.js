@@ -1,7 +1,7 @@
-import { CurrentDate, GetDayInMonth } from "./utilities/calendar.js";
-import { GetCurrentSelect } from "./index.js";
-import { GetLHHPData, GetKQDK, GetLHCNData } from "./FetchData.js";
-import Container from "./utilities/Container.js";
+import { CurrentDate, GetDayInMonth } from "../utilities/calendar.js";
+import { GetCurrentSelect } from "./EventFunctions.js";
+import { GetLHHPData, GetKQDK, GetLHCNData } from "../FetchData/FetchData.js";
+import Container from "../utilities/Container.js";
 import { CreateData } from './DisplayUI.js'
 
 const calendar = document.querySelector(".main-calendar")
@@ -11,24 +11,22 @@ function GetDate(day) { return [day.getDate(), day.getMonth(), day.getFullYear()
 export function GetFirstAndLastDayOfWeek(day) {
     const a = day.getDate() - day.getDay() + 1
     const b = day.getDate() + 7 - day.getDay()
-    const pre = GetDayInMonth(day.getMonth())
-    const cur = GetDayInMonth(day.getMonth() + 1)
-    const next = GetDayInMonth(day.getMonth() + 2)
+
+    const preM = day.getMonth() || 12
+    const curM = day.getMonth() + 1
+    const nextM = (day.getMonth() + 2) % 12
+
+    const pre = GetDayInMonth(preM)
+    const cur = GetDayInMonth(curM)
+    const next = GetDayInMonth(nextM)
+
     return [
-        [
-            a < 0 ? pre + a : a,
-            a < 0 ? day.getMonth() : day.getMonth() + 1,
-            day.getFullYear()
-        ], [
-            b > cur ? b % cur : b,
-            b > cur ? day.getMonth() + 2 : day.getMonth() + 1,
-            day.getFullYear()
-        ]
+        [a < 0 ? pre + a : a, a < 0 ? preM : curM, day.getFullYear()],
+        [b > cur ? b % cur : b, b > cur ? nextM : curM, day.getFullYear()]
     ]
 }
 export const studyCalendar = new Container(calendar, data => {
     if (data.BUOIHOC == "Toi" || !data) return
-    console.log(data)
     const elem = CreateData()
 
     elem.style.gridColumn = `${data.THU - 1} / ${data.THU}`
@@ -41,7 +39,6 @@ export const studyCalendar = new Container(calendar, data => {
 
 export async function RenderLHCN(hsID) {
     const data = await GetLHCNData([hsID, ...GetFirstAndLastDayOfWeek(CurrentDate())])
-
     studyCalendar.ReplaceData(data).Render()
 }
 // (async function () {
@@ -50,13 +47,6 @@ export async function RenderLHCN(hsID) {
 //     studyCalendar.ReplaceData(data)
 //     studyCalendar.Render()
 // })()
-
-
-
-
-
-
-
 
 // document.querySelector('.calendar-dates').addEventListener("click", async function (e) {
 //     console.log("asfasf")

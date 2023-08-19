@@ -2,3 +2,6 @@ Data/*
 nouse/*
 studystuff.js
 */sampe.js
+*.cpp
+*.exe
+.vscode/

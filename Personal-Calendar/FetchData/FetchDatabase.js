@@ -1,4 +1,4 @@
-import Database from "./utilities/database.js";
+import Database from "../utilities/Database.js";
 
 // ____________________________________________________________________________________________________________________________________________________________________________________________________________________________
 // Database ____________________________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -59,11 +59,7 @@ export function KQDKData(hsID, khID) {
     const result = KQDK._.filter(({ id }) => khC.includes(id) && hsC.includes(id)).map(i => i.data)
     if (result.length) return result
 }
-export function LHHPData(hsID, lhpID) {
-    const lhp = LHP.GetOne({ ID: lhpID })
-    if (!lhp) return
-    const lhpC = Database.FindAllConnectFrom(lhp)
-}
+export function LHHPData(hsID, lhpID) { }
 
 export function LHCNData(hsID, bd = [], kt = []) {
 

@@ -7,7 +7,8 @@
     <title>Testing</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stylesheet/calendar.css">
-    <script type="module" src="./StudyCalendar.js" defer></script>
+    <script type="module" src="https://code.jquery.com/jquery-3.7.0.min.js" defer> </script>
+    <script type="module" src="./Display/StudyCalendar.js" defer></script>
     <script type="module" src="./utilities/calendar.js" defer></script>
     <script type="module" src="./index.js" defer></script>
 </head>
@@ -20,7 +21,8 @@
                 <form action="./">
                     <div class="form-section">
                         <label for="maHocSinh">Ma hoc sinh</label>
-                        <input name="maHocSinh" type="password" value="" class="text-input" id="maHocSinh">
+                        <input name="maHocSinh" type="password" value="D82F43C5BBAE4CE7B2A8A9DB2CAD2736"
+                            class="text-input" id="maHocSinh">
                     </div>
                     <div class="form-section">
                         <button class="btn submit-button">Tim kiem</button>
@@ -28,17 +30,36 @@
                 </form>
             </div>
             <div class="section danh-sach-ke-hoach">
-                <h2>Ke hoach</h2>
+                <div class="section-header">
+                    <h2>Ke hoach</h2>
+                    <div class="section-header-item">
+                        <label for="force-fetch-kh">Lay du lieu tu api</label>
+                        <input type="checkbox" name="force-fetch" id="force-fetch-kh">
+                    </div>
+                </div>
                 <div class="danh-sach flex ke-hoach">
                 </div>
             </div>
             <div class="section danh-sach-hoc-phan">
-                <h2>Danh sach hoc phan</h2>
+                <div class="section-header">
+                    <h2>Danh sach hoc phan</h2>
+                    <div class="section-header-item">
+                        <label for="force-fetch-hp">Lay du lieu tu api</label>
+                        <input type="checkbox" name="force-fetch" id="force-fetch-hp">
+                    </div>
+                </div>
                 <div class="danh-sach hoc-phan">
                 </div>
             </div>
             <div class="section danh-sach-lop-hoc-phan">
-                <h2>Danh sach lop</h2>
+                <div class="section-header">
+                    <h2>Danh sach lop hoc phan</h2>
+                    <div class="section-header-item">
+                        <label for="force-fetch-lhp">Lay du lieu tu api</label>
+                        <input type="checkbox" name="force-fetch" id="force-fetch-lhp">
+                    </div>
+                </div>
+
                 <div class="danh-sach lop-hoc-phan">
                 </div>
             </div>
@@ -76,7 +97,15 @@
                 </div>
             </div>
             <div class="section">
-                <h2>Lich ca nhan</h2>
+                <div class="section-header">
+                    <h2>Lich Hoc Phan</h2>
+                    <div class="section-header-item">
+                        <label for="set-lich-canhan">Lich ca nhan</label>
+                        <input type="radio" name="lich-hoc-phan" id="set-lich-canhan" checked>
+                        <label for="set-lich-xeplop">Lich xep lop</label>
+                        <input type="radio" name="lich-hoc-phan" id="set-lich-xeplop">
+                    </div>
+                </div>
                 <div class="study-calendar">
                     <div class="dates">
                         <div class="table-heading date">Thu 2</div>
@@ -135,7 +164,6 @@
                 <div class="danh-sach flex lop-da-chon" style="flex-direction: column;">
                 </div>
             </div>
-
         </section>
         <div class="check-fetch hide"> <span>Fetching...</span> </div>
     </main>
