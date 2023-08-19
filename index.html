@@ -7,6 +7,9 @@
     <title>Testing</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stylesheet/calendar.css">
+    <script type="module" src="./StudyCalendar.js" defer></script>
+    <script type="module" src="./utilities/calendar.js" defer></script>
+    <script type="module" src="./index.js" defer></script>
 </head>
 
 <body>
@@ -17,8 +20,7 @@
                 <form action="./">
                     <div class="form-section">
                         <label for="maHocSinh">Ma hoc sinh</label>
-                        <input name="maHocSinh" type="password" value="8DE5A8FF18C8477FA6293B67E78CD5E4"
-                            class="text-input" id="maHocSinh">
+                        <input name="maHocSinh" type="password" value="" class="text-input" id="maHocSinh">
                     </div>
                     <div class="form-section">
                         <button class="btn submit-button">Tim kiem</button>
@@ -103,8 +105,6 @@
                     </div>
                 </div>
             </div>
-
-
         </section>
         <section class="right-container calendar">
             <div class="date-calendar">
@@ -139,9 +139,6 @@
         </section>
         <div class="check-fetch hide"> <span>Fetching...</span> </div>
     </main>
-    <script type="module" src="./utilities/calendar.js" defer></script>
-    <script type="module" src="./StudyCalendar.js"></script>
-    <script type="module" src="./index.js" defer></script>
 </body>
 
 </html>

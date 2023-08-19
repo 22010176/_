@@ -12,7 +12,7 @@ const thongTinTHS = document.querySelector(".info-list-content[data-field='ten-s
 const thongTinKhoaHoc = document.querySelector(".info-list-content[data-field='khoa']")
 const thongTinNganhHoc = document.querySelector(".info-list-content[data-field='nganh-hoc']")
 
-function CreateData(cssClass = ['du-lieu']) {
+export function CreateData(cssClass = ['du-lieu']) {
     const elem = document.createElement("div");
     cssClass.forEach(cl => elem.classList.add(cl));
     return elem

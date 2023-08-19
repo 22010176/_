@@ -1,8 +1,9 @@
 import { RenderHS, ddkCon, hpCon, khCon, ldcCon, lhpCon, lhpthCon } from './DisplayUI.js'
-import { GetHPData, GetHSData, GetKHData, GetKQDK, GetLHPData } from './FetchData.js'
+import { GetHPData, GetHSData, GetKHData, GetKQDK, GetLHCNData, GetLHHPData, GetLHPData } from './FetchData.js'
 import { HP, HS, KH, KQDK, LHP } from './FetchDatabase.js'
 import Database from './utilities/database.js'
-
+import { CurrentDate, InitCalendar } from './utilities/calendar.js'
+import { GetFirstAndLastDayOfWeek, RenderLHCN, studyCalendar } from './StudyCalendar.js'
 import { ToggleClass, CheckElement, ToggleLeftContainer, deleteObj } from "./utilities/utils.js"
 
 Database.Load()
@@ -11,6 +12,8 @@ const formSubmitButton = document.querySelector(".submit-button")
 const chonLop = document.querySelector(".nut-chon-lop")
 
 const data = { curHS: null, curKH: null, curHP: null, curLHP: null, curLHPTH: null }
+
+InitCalendar([_ => data.curHS && RenderLHCN(data.curHS.QLSV_NGUOIHOC_ID)])
 
 formSubmitButton.addEventListener("click", formInputBtnE)
 async function formInputBtnE(e) {
@@ -35,6 +38,7 @@ async function formInputBtnE(e) {
 
     // Render display
     RenderHS(data.curHS)
+    RenderLHCN(hs.QLSV_NGUOIHOC_ID)
     khCon.Render()
 }
 
@@ -60,7 +64,6 @@ async function khConE(e) {
         new Promise(async resolve => resolve(await GetKQDK([data.curHS.QLSV_NGUOIHOC_ID, data.curKH.ID])))
             .then(ddkCon.ReplaceData.bind(ddkCon)),
     ])
-    GetKQDK([data.curHS.QLSV_NGUOIHOC_ID, data.curKH.ID]).then(console.log)
     Database.Save()
     ToggleLeftContainer()
 

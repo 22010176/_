@@ -1,5 +1,5 @@
-import { _HP, _HS, _KH, _KQDK, _LHP, _LHHP } from "./FetchAPI.js"
-import { HPData, HSData, KHData, KQDKData, LHPData, LHHPData } from "./FetchDatabase.js"
+import { _HP, _HS, _KH, _KQDK, _LHP, _LHHP, _LHCN } from "./FetchAPI.js"
+import { HPData, HSData, KHData, KQDKData, LHPData, LHHPData, LHCNData } from "./FetchDatabase.js"
 
 const wait = 50
 async function Wait(time) { return await new Promise(resolve => setTimeout(resolve, time)) }
@@ -29,5 +29,6 @@ const GetHPData = GetData([HPData, _HP], _HP)
 const GetLHPData = GetData([LHPData, _LHP], _LHP)
 const GetKQDK = GetData([KQDKData, _KQDK], _KQDK)
 const GetLHHPData = GetData([LHHPData, _LHHP], _LHHP)
+const GetLHCNData = GetData([LHCNData, _LHCN], _LHCN)
 
-export { GetHSData, GetKHData, GetHPData, GetLHPData, GetKQDK, GetLHHPData }
+export { GetHSData, GetKHData, GetHPData, GetLHPData, GetKQDK, GetLHHPData, GetLHCNData }

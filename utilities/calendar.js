@@ -8,12 +8,10 @@ const yearDisplay = document.querySelector(".year-display")
 const currentDate = new Date();
 let thangHientai = currentDate.getMonth(), namHientai = currentDate.getFullYear();
 
-InitCalendar()
-
-function InitCalendar() {
+export function InitCalendar(funcs = []) {
     monthDisplay.innerText = thangHientai + 1
     yearDisplay.innerText = namHientai
-    InitCalendarUIEvent()
+    InitCalendarUIEvent(funcs)
     RenderMonthDays(new Date(namHientai, thangHientai, 1).getDay(), thangHientai + 1)
     document.querySelector(`.calendar-day[data-day="${currentDate.getDate()}"]`).classList.add("active")
 }
@@ -45,11 +43,16 @@ function ChangeMonth(value) {
     monthDisplay.innerText = thangHientai + 1
     monthDisplay.setAttribute("data-thang", thangHientai + 1)
 }
-function InitCalendarUIEvent() {
+function InitCalendarUIEvent(funcs = []) {
     calenderElem.addEventListener("click", function (e) {
+        console.log(1)
         const elem = e.target
         if (elem.classList.contains("doi-thang")) return ChangeMonth(+elem.getAttribute("data-thang-thaydoi"))
         if (elem.classList.contains("calendar-day")) return ToggleClass(elem, "active")
+    })
+    funcs.forEach(funcs => {
+        if (typeof funcs != 'function') return
+        calenderElem.addEventListener("click", funcs)
     })
 }
 function CreateDayElem(empty, day = 0) {
@@ -61,7 +64,7 @@ function CreateDayElem(empty, day = 0) {
     return elem
 }
 function leapyear(year) { return (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0); }
-function GetDayInMonth(month) {
+export function GetDayInMonth(month) {
     switch (month) {
         case 1: case 3: case 5: case 7: case 8: case 10: case 12:
             return 31;
@@ -72,4 +75,6 @@ function GetDayInMonth(month) {
     }
 }
 
-export function GetCurerntSelectedDate() { return { ngay: +document.querySelector(".calendar-day.active").getAttribute('data-day'), thang: thangHientai + 1, nam: namHientai } }
+export function CurrentDate() {
+    return new Date(namHientai, thangHientai, +document.querySelector(".calendar-day.active").getAttribute('data-day'))
+}

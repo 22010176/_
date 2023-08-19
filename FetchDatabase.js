@@ -60,8 +60,13 @@ export function KQDKData(hsID, khID) {
     if (result.length) return result
 }
 export function LHHPData(hsID, lhpID) {
-
+    const lhp = LHP.GetOne({ ID: lhpID })
+    if (!lhp) return
+    const lhpC = Database.FindAllConnectFrom(lhp)
 }
 
+export function LHCNData(hsID, bd = [], kt = []) {
+
+}
 // export function 
 export { HS, KH, HP, LHP, KQDK, LHHP }
